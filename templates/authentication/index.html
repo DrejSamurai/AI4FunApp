@@ -3,6 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Authentication</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+  body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display:table;
+}
+body {
+    display:table-cell;
+    vertical-align:middle;
+}
+div {
+    display:table;/* shrinks to fit content */
+    margin:auto;
+}
+    </style>
 </head>
 <body>
     {% for message in messages %}
@@ -19,8 +37,11 @@
     <h4>You are successfully logged in.</h4>
          <button type="submit"> <a href="/signout">SignOut</a></button>
      {% else %}
-        <button type="submit"> <a href="/signup">SignUp</a></button>
-        <button type="submit"> <a href="/signin">SigIn</a></button>
+        <div>
+        <h1>Welcome to Ai4Fun</h1>
+        <button type="submit" class="btn btn-seconday bg-primary" style="margin-right: 5px"> <a href="/signup" class="text-light">Signup</a></button>
+        <button type="submit" class="btn btn-seconday bg-primary"> <a href="/signin" class="text-light">Signin</a></button>
+     </div>
     {% endif %}
 
 </body>
