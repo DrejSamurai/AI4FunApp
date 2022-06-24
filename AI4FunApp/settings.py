@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'LearningApp.apps.LearningappConfig',
+    'login_module',
+    'quiz_module',
+    'questions_module',
+    'results_module',
+
 ]
 
 MIDDLEWARE = [
@@ -119,6 +124,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+    BASE_DIR /'quiz_module'/'static'/'quizes',
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
