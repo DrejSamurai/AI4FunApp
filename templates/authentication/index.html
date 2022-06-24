@@ -5,17 +5,7 @@
     <title>Authentication</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-  body, html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display:table;
-}
-body {
-    display:table-cell;
-    vertical-align:middle;
-}
+
 div {
     display:table;/* shrinks to fit content */
     margin:auto;
@@ -33,9 +23,32 @@ div {
     {% endfor %}
 
     {% if user.is_authenticated %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+        <a class="navbar-brand text-white" href="#">Ai4Fun</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+  <div class="collapse navbar-collapse bg text-white" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-white" href="#">Courses<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Tests</a>
+      </li>
+        <li class="nav-item active">
+        <a class="nav-link text-white" href="#">Get Certified<span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item">
+             <a class="nav-link text-white" href="/signout">SignOut</a></button>
+        </li>
+    </ul>
+  </div>
+</nav>
     <h3>Welcome to AI4Fun {{ fname }}</h3>
     <h4>You are successfully logged in.</h4>
-         <button type="submit"> <a href="/signout">SignOut</a></button>
+
      {% else %}
         <div>
         <h1>Welcome to Ai4Fun</h1>
