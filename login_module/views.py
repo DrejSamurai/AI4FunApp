@@ -4,10 +4,13 @@ from django.http import HttpResponse
 # Create your views here.
 from django.contrib.auth.models import User
 from django.contrib import messages
+from courses_module.models import Course
 
 
 def home(request):
-    return render(request, "authentication/index.html")
+    queryset = Course.objects.all()
+    context = {"courses": queryset}
+    return render(request, "authentication/index.html", context)
 
 
 def signup(request):
@@ -40,13 +43,13 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            context = {'fname' : fname}
+            context = {'fname': fname}
             return render(request, "authentication/index.html", context=context)
         else:
             messages.error(request, "Bad Credentials")
             return redirect('home')
-
-    return render(request, "authentication/signin.html")
+    else:
+        return render(request, "authentication/signin.html")
 
 
 def signout(request):
