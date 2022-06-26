@@ -4,12 +4,37 @@
     <meta charset="UTF-8">
     <title>Authentication</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
 
 div {
     display:table;/* shrinks to fit content */
     margin:auto;
 }
+
+ p {font-size: 16px;}
+    .margin {margin-bottom: 45px;}
+    .bg-1 {
+      background-color: #4d4d4f; /* Green */
+      color: #ffffff;
+    }
+    .bg-2 {
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+    }
+    .bg-3 {
+      background-color: #ffffff; /* White */
+      color: #555555;
+    }
+    .bg-4 {
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+    }
+    .container-fluid {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
     </style>
 </head>
 <body>
@@ -23,11 +48,12 @@ div {
     {% endfor %}
 
     {% if user.is_authenticated %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
-        <a class="navbar-brand text-white" href="home">Ai4Fun</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+  <a class="navbar-brand text-white" href="home">Ai4Fun</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   <div class="collapse navbar-collapse bg text-white" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -37,19 +63,32 @@ div {
       <li class="nav-item">
         <a class="nav-link text-white" href="#">Tests</a>
       </li>
-        <li class="nav-item active">
+      <li class="nav-item active">
         <a class="nav-link text-white" href="#">Get Certified<span class="sr-only">(current)</span></a>
       </li>
-        <li class="nav-item">
-             <a class="nav-link text-white" href="/signout">SignOut</a></button>
-        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/signout" class="text-white"> Log Out</a></li>
     </ul>
   </div>
 </nav>
-    <h3>Welcome to AI4Fun {{ fname }}</h3>
 
+<!-- First Container -->
+<div class="container-fluid bg-1 text-center">
+  <h3 class="margin">What is Ai4Fun?</h3>
+  <h3>AI4Fun is an open source educational software for anyone who wants to learn, test themselves and gain a certificate.</h3>
+</div>
 
-    <div class="container pt-4">
+<!-- Second Container -->
+<div class="container-fluid bg-2 text-center">
+  <h3 class="margin">What is AI?</h3>
+  <p>Artificial intelligence is the simulation of human intelligence processes by machines, especially computer systems. Specific applications of AI include expert systems, natural language processing, speech recognition and machine vision. </p>
+</div>
+
+<!-- Third Container (Grid) -->
+<div class="container-fluid bg-3 text-center">
+  <h3 class="margin">Where To Start</h3><br>
+ <div class="container pt-4">
       <div class="row">
           {% for course in courses %}
           <div class="col">
@@ -66,10 +105,11 @@ div {
          </div>
       </div>
       <hr>
-
-
         {% endfor %}
       </div>
+  </div>
+</div>
+
   </div>
 <hr>
 
@@ -83,4 +123,8 @@ div {
     {% endif %}
 
 </body>
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p> Made by Andrej Mishevski for a school project. </p>
+</footer>
 </html>

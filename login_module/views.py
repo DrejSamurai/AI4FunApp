@@ -4,10 +4,13 @@ from django.http import HttpResponse
 # Create your views here.
 from django.contrib.auth.models import User
 from django.contrib import messages
+from courses_module.models import Course
 
 
 def home(request):
-    return render(request, "authentication/index.html")
+    queryset = Course.objects.all()
+    context = {"courses": queryset}
+    return render(request, "authentication/index.html", context)
 
 
 def signup(request):
