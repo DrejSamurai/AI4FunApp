@@ -18,10 +18,10 @@
         <a class="nav-link text-white" href="/courses">Courses<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white" href="#">Tests</a>
+        <a class="nav-link text-white" href="/tests">Tests</a>
       </li>
         <li class="nav-item active">
-        <a class="nav-link text-white" href="#">Get Certified<span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="/certificate">Get Certified<span class="sr-only">(current)</span></a>
       </li>
         <li class="nav-item">
              <a class="nav-link text-white" href="/signout">SignOut</a></button>
@@ -29,8 +29,27 @@
     </ul>
   </div>
 </nav>
-
-
+<br>
+  <div class="container pt-4">
+      <div class="row">
+          {% for course in courses %}
+          <div class="col">
+              <div class="card">
+                    <div class="card-body" style="width: 200px;">
+                        <h5 class="card-title">{{ course.name }}</h5>
+                        <h5 class="text">Topic:{{ course.topic }}</h5>
+                        <h6 class="card-text">Difficulty: {{ course.difficulty }}</h6>
+                     </div>
+                  <div class="card-footer">
+                      <button class="btn btn-primary" id="start-button">
+                          <a class="text-light" href="courses/{{ course.pk }}">Start Course</a></button>
+                  </div>
+         </div>
+      </div>
+        {% endfor %}
+      </div>
+  </div>
+<hr>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

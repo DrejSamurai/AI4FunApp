@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'quiz_module',
     'questions_module',
     'results_module',
-
+    'courses_module',
 ]
 
 MIDDLEWARE = [

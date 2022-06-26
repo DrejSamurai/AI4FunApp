@@ -47,7 +47,32 @@ div {
   </div>
 </nav>
     <h3>Welcome to AI4Fun {{ fname }}</h3>
-    <h4>You are successfully logged in.</h4>
+
+
+    <div class="container pt-4">
+      <div class="row">
+          {% for course in courses %}
+          <div class="col">
+              <div class="card">
+                    <div class="card-body" style="width: 200px;">
+                        <h5 class="card-title">{{ course.name }}</h5>
+                        <h5 class="text">Topic:{{ course.topic }}</h5>
+                        <h6 class="card-text">Difficulty: {{ course.difficulty }}</h6>
+                     </div>
+                  <div class="card-footer">
+                      <button class="btn btn-primary" id="start-button">
+                          <a class="text-light" href="courses/{{ course.pk }}">Start Course</a></button>
+                  </div>
+         </div>
+      </div>
+      <hr>
+
+
+        {% endfor %}
+      </div>
+  </div>
+<hr>
+
 
      {% else %}
         <div>

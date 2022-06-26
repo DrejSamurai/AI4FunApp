@@ -40,7 +40,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            context = {'fname' : fname}
+            context = {'fname': fname}
             return render(request, "authentication/index.html", context=context)
         else:
             messages.error(request, "Bad Credentials")
