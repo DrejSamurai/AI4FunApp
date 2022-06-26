@@ -48,8 +48,8 @@ def signin(request):
         else:
             messages.error(request, "Bad Credentials")
             return redirect('home')
-
-    return render(request, "authentication/signin.html")
+    else:
+        return render(request, "authentication/signin.html")
 
 
 def signout(request):

@@ -13,3 +13,7 @@ def courses_view(request):
 def course_view(request, pk):
     course = Course.objects.get(pk=pk)
     return render(request, 'courses/course.html', {'obj': course})
+
+
+def get_certified_view(request):
+    return render(request, 'appPages/certificate.html')
