@@ -28,9 +28,13 @@
         </li>
     </ul>
   </div>
-
 </nav>
 
+  <h1> {{ obj.name }} </h1>
+{%  for question in obj.get_questions%}
+    <h6>{{ question.text }}</h6>
+    <h6>{{ question.get_answers}}</h6>
+{% endfor %}
 
 
 </body>

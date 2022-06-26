@@ -7,6 +7,7 @@ DIFF_CHOICES = (
     ('hard', 'hard'),
 )
 
+
 class Quiz(models.Model):
     name = models.CharField(max_length=120)
     topic = models.CharField(max_length=120)
