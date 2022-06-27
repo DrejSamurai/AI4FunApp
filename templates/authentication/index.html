@@ -47,7 +47,7 @@ div {
         </div>
     {% endfor %}
 
-    {% if user.is_authenticated %}
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
   <a class="navbar-brand text-white" href="home">Ai4Fun</a>
@@ -67,9 +67,15 @@ div {
         <a class="nav-link text-white" href="#">Get Certified<span class="sr-only">(current)</span></a>
       </li>
     </ul>
+        {% if user.is_authenticated %}
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/signout" class="text-white"> Log Out</a></li>
     </ul>
+      {% else %}
+            <ul class="nav navbar-nav navbar-right">
+      <li><a href="/signin" class="text-white"> Sing in</a></li>
+    </ul>
+            {% endif %}
   </div>
 </nav>
 
@@ -109,19 +115,7 @@ div {
       </div>
   </div>
 </div>
-
-  </div>
 <hr>
-
-
-     {% else %}
-        <div>
-        <h1>Welcome to Ai4Fun</h1>
-        <button type="submit" class="btn btn-seconday bg-primary" style="margin-right: 5px"> <a href="/signup" class="text-light">Signup</a></button>
-        <button type="submit" class="btn btn-seconday bg-primary"> <a href="/signin" class="text-light">Signin</a></button>
-     </div>
-    {% endif %}
-
 </body>
 <!-- Footer -->
 {% if user.is_authenticated %}

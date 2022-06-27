@@ -31,16 +31,6 @@ form {
       box-sizing: border-box;
     }
 
-    button {
-      background-color: #04AA6D;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-
     button:hover {
       opacity: 0.8;
     }
@@ -71,8 +61,8 @@ form {
     </style>
 </head>
 
-<body>
-    <form action="/signin" method="post">
+<body class="bg-dark">
+    <form action="/signin" method="post" class="bg-light">
         <h3>Login</h3>
         {% csrf_token %}
             <div class="container">
@@ -81,8 +71,10 @@ form {
             <br>
             <label for="">Password</label>
             <input type="password" id="pass1" name="pass1" placeholder="Enter your password" required>
-            <br>
-            <button type="submit" class="btn btn-warning btn-lg ms-2">Sign In</button>
+                <a class="password-reset-link">Forgot password?</a>
+            <br><br>
+                <a class="btn btn-warning btn-lg ms-2 ml-3" href="/signup" >Register</a>
+            <button type="submit" class="btn btn-warning btn-lg ms-2 ml-3">Sign In</button>
             </div>
     </form>
 </body>
