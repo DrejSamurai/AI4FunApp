@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Course
-
+from quiz_module.models import Quiz
 # Create your views here.
 
 
@@ -16,4 +16,9 @@ def course_view(request, pk):
 
 
 def get_certified_view(request):
-    return render(request, 'appPages/certificate.html')
+    quiz = Quiz.objects.filter(name="Certificate Quiz").get()
+    return render(request, 'appPages/certificate.html', {"quiz": quiz})
+
+
+def get_certificet_test_view(request):
+    return render(request, "appPages/certificateTest.html")
