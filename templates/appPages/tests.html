@@ -21,7 +21,7 @@
         <a class="nav-link text-white" href="/tests">Tests</a>
       </li>
         <li class="nav-item active">
-        <a class="nav-link text-white" href="/certificate">Get Certified<span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="/certificate_test">Get Certified<span class="sr-only">(current)</span></a>
       </li>
     </ul>
          <ul class="nav navbar-nav navbar-right">
@@ -33,7 +33,6 @@
   <div class="container pt-4">
       <div class="row">
           {% for quiz in quizes %}
-              {% if quiz.name != "Certificate Quiz" %}
           <div class="col">
               <div class="card">
                     <div class="card-body" style="width: 200px;">
@@ -47,7 +46,6 @@
                   </div>
          </div>
       </div>
-              {% endif %}
         {% endfor %}
       </div>
   </div>

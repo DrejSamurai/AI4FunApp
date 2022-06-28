@@ -21,7 +21,7 @@ const activateTimer = (time) => {
        let displayMinutes
 
        const timer = setInterval(() => {
-           console.log("Hello")
+           ///console.log("Hello")
            seconds = seconds - 1
            if (seconds < 0){
                seconds = 59

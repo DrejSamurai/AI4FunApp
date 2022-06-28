@@ -21,7 +21,7 @@
         <a class="nav-link text-white" href="/tests">Tests</a>
       </li>
         <li class="nav-item active">
-        <a class="nav-link text-white" href="/certificate">Get Certified<span class="sr-only">(current)</span></a>
+        <a class="nav-link text-white" href="/certificate_test">Get Certified<span class="sr-only">(current)</span></a>
       </li>
     </ul>
          <ul class="nav navbar-nav navbar-right">
@@ -30,21 +30,22 @@
   </div>
 </nav>
 <br>
-  <div class="container pt-4" style="width: 300px;">
+  <div class="container pt-4">
       <div class="row">
+          {% for quiz in quizes %}
           <div class="col">
               <div class="card">
-                    <div class="card-body" >
+                    <div class="card-body" style="width: 200px;">
                         <h5 class="card-title">{{ quiz.name }}</h5>
                         <h6 class="card-text">Duration: {{ quiz.time }}min</h6>
-                        <h6 class="card-text">Difficulty: {{ quiz.difficulty }}</h6>
                      </div>
                   <div class="card-footer">
                       <button class="btn btn-primary" id="start-button">
-                          <a class="text-light" href="certificate/certificate_test">Start Quiz</a></button>
+                          <a class="text-light" href="certificate_test/{{ quiz.pk }}/">Start Quiz</a></button>
                   </div>
          </div>
       </div>
+        {% endfor %}
       </div>
   </div>
  <hr>
