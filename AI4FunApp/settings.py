@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'questions_module',
     'results_module',
     'courses_module',
+    'certificate_quiz_module',
+    'certificate_results_module',
+    'certificate_questions_module'
 ]
 
 MIDDLEWARE = [
