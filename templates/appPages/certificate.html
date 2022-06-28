@@ -23,6 +23,13 @@
         <li class="nav-item active">
         <a class="nav-link text-white" href="/certificate_test">Get Certified<span class="sr-only">(current)</span></a>
       </li>
+          {%for group in request.user.groups.all %}
+            {% if group.name == 'Professor' %}
+                <li>
+                    <a class="nav-link text-white" href="/results">Results<span class="sr-only">(current)</span></a>
+                 </li>
+            {% endif %}
+        {% endfor %}
     </ul>
          <ul class="nav navbar-nav navbar-right">
       <li><a href="/signout" class="text-white"> Log Out</a></li>

@@ -37,6 +37,7 @@ div {
     }
     </style>
 </head>
+
 <body>
     {% for message in messages %}
         <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -66,13 +67,10 @@ div {
       <li class="nav-item active">
         <a class="nav-link text-white" href="/certificate_test">Get Certified<span class="sr-only">(current)</span></a>
       </li>
-        {%for group in request.user.groups.all %}
-            {% if group.name == 'Professor' %}
                 <li>
                     <a class="nav-link text-white" href="/results">Results<span class="sr-only">(current)</span></a>
                  </li>
-            {% endif %}
-        {% endfor %}
+
     </ul>
         {% if user.is_authenticated %}
     <ul class="nav navbar-nav navbar-right">
@@ -85,46 +83,34 @@ div {
             {% endif %}
   </div>
 </nav>
-
-<!-- First Container -->
-<div class="container-fluid bg-1 text-center">
-  <h3 class="margin">What is Ai4Fun?</h3>
-  <h3>AI4Fun is an open source educational software for anyone who wants to learn, test themselves and gain a certificate.</h3>
-</div>
-
-<!-- Second Container -->
-<div class="container-fluid bg-2 text-center">
-  <h3 class="margin">What is AI?</h3>
-  <p>Artificial intelligence is the simulation of human intelligence processes by machines, especially computer systems. Specific applications of AI include expert systems, natural language processing, speech recognition and machine vision. </p>
-</div>
-
-<!-- Third Container (Grid) -->
-<div class="container-fluid bg-3 text-center">
-  <h3 class="margin">Where To Start</h3><br>
- <div class="container pt-4">
-      <div class="row">
-          {% for course in courses %}
-          <div class="col">
-              <div class="card">
-                    <div class="card-body" style="width: 200px;">
-                        <h5 class="card-title">{{ course.name }}</h5>
-                        <h5 class="text">Topic:{{ course.topic }}</h5>
-                        <h6 class="card-text">Difficulty: {{ course.difficulty }}</h6>
-                     </div>
-                  <div class="card-footer">
-                      <button class="btn btn-primary" id="start-button">
-                          <a class="text-light" href="courses/{{ course.pk }}">Start Course</a></button>
-                  </div>
-         </div>
-      </div>
-      <hr>
-        {% endfor %}
-      </div>
-  </div>
-</div>
-<hr>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name:</th>
+      <th scope="col">Quiz:</th>
+      <th scope="col">Results:</th>
+    </tr>
+  </thead>
+      <tbody>
+      {% for result in results %}
+          {% if result.score < 50 %}
+    <tr class="table-danger">
+      <td>{{ result.user }}</td>
+      <td>{{ result.quiz }}</td>
+      <td>{{result.score}}</td>
+    </tr>
+          {% endif %}
+           {% if result.score > 50 %}
+              <tr class="table-success">
+                <td>{{ result.user }}</td>
+                <td>{{ result.quiz }}</td>
+                <td>{{result.score}}</td>
+                </tr>
+          {% endif %}
+       {% endfor %}
+  </tbody>
+</table>
 </body>
-<!-- Footer -->
 
 <footer class="container-fluid bg-4 text-center">
   <p> Made by Andrej Mishevski for a school project. </p>

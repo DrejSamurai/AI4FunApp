@@ -5,6 +5,12 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from courses_module.models import Course
+from results_module.models import Result
+
+def results_view(request):
+    queryset = Result.objects.all()
+    context = {"results": queryset}
+    return render(request, "appPages/results.html", context)
 
 
 def home(request):
