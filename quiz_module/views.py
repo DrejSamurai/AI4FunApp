@@ -1,11 +1,34 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Quiz
 from django.views.generic import ListView
 from django.http import JsonResponse
 from questions_module.models import Question, Answer
-from  results_module.models import Result
+from results_module.models import Result
+from .forms import QuizForm
 
-# Create your views here.
+def add_quiz(request):
+    form = QuizForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/add_quiz')
+    context = {'form': form}
+    return render(request, 'appPages/addQuiz.html', context)
+
+
+def edit_quiz(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    form = QuizForm(request.POST or None, instance=quiz)
+    if form.is_valid():
+        form.save()
+        return redirect('/tests')
+    context = {'quiz': quiz, 'form': form}
+    return render(request, 'appPages/EditQuiz.html', context)
+
+
+def delete_quiz(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    quiz.delete()
+    return redirect('/tests')
 
 
 # This is the main quiz page from the navbar

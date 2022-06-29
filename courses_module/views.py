@@ -14,7 +14,6 @@ def add_course(request):
     return render(request, 'appPages/addCourse.html', context)
 
 
-
 def edit_course(request, pk):
     course = Course.objects.get(pk=pk)
     form = CourseForm(request.POST or None, instance=course)
