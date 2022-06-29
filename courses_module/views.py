@@ -1,8 +1,34 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Course
 from quiz_module.models import Quiz
+from .forms import CourseForm
 # Create your views here.
 
+
+def add_course(request):
+    form = CourseForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/add_course')
+    context = {'form': form}
+    return render(request, 'appPages/addCourse.html', context)
+
+
+
+def edit_course(request, pk):
+    course = Course.objects.get(pk=pk)
+    form = CourseForm(request.POST or None, instance=course)
+    if form.is_valid():
+        form.save()
+        return redirect('/courses')
+    context = {'course': course, 'form': form}
+    return render(request, 'appPages/editCourse.html', context)
+
+
+def delete_event(request, pk):
+    course = Course.objects.get(pk=pk)
+    course.delete()
+    return redirect('/courses')
 
 def courses_view(request):
     queryset = Course.objects.all()
