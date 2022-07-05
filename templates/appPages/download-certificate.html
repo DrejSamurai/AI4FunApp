@@ -1,0 +1,36 @@
+{% extends "appPages/base.html" %}
+{% block css %}
+      <style>
+          #footer {
+            position: fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/
+            height: 40px;
+            background: grey;
+        }
+     </style>
+{% endblock %}
+
+  {% block scripts %}
+    <script>
+    function generatePDF(){
+        const element = document.getElementById("printer");
+
+        html2pdf().from(element).save();
+    }
+    </script>
+    {% endblock %}
+
+{% block content %}
+    <div class="container" id="printer">
+    <h1>AI certificate</h1>
+    <h2>User:{{ user.get_full_name }}</h2>
+    <h2>Basics In AI</h2>
+    </div>
+    <div class="container">
+     <button type="button" onclick="generatePDF()">Download Certificate</button>
+    </div>
+
+{% endblock %}

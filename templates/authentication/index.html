@@ -55,6 +55,7 @@ div {
 
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
+    <h1 class="margin">Welcome to the AI4FUN Home Page</h1>
   <h3 class="margin">What is Ai4Fun?</h3>
   <h3>AI4Fun is an open source educational software for anyone who wants to learn, test themselves and gain a certificate.</h3>
 </div>
@@ -67,16 +68,18 @@ div {
 
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-3 text-center">
+{% if user.is_authenticated %}
   <h3 class="margin">Where To Start</h3><br>
  <div class="container pt-4">
       <div class="row">
           {% for course in courses %}
+              {% if course.difficulty == "beginner" %}
           <div class="col">
               <div class="card">
                     <div class="card-body" style="width: 200px;">
                         <h5 class="card-title">{{ course.name }}</h5>
                         <h5 class="text">Topic:{{ course.topic }}</h5>
-                        <h6 class="card-text">Difficulty: {{ course.difficulty }}</h6>
+                        <h6 class="card-text text-success">Difficulty: {{ course.difficulty }}</h6>
                      </div>
                   <div class="card-footer">
                       <button class="btn btn-primary" id="start-button">
@@ -84,11 +87,15 @@ div {
                   </div>
          </div>
       </div>
+              {% endif %}
       <hr>
         {% endfor %}
       </div>
   </div>
 </div>
+    {% else %}
+    <h1>You need to log-in before you can contents of this page</h1>
+    {% endif %}
 <hr>
 
 {% endblock %}

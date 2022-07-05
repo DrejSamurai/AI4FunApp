@@ -5,6 +5,9 @@ const quizBox = document.getElementById('quiz-box')
 const scoreBox = document.getElementById('score-box')
 const resultBox = document.getElementById('result-box')
 const timerBox = document.getElementById('timer-box')
+const certificateBox = document.getElementById('certificate-box')
+
+
 
 const activateTimer = (time) => {
     //console.log(time)
@@ -106,6 +109,7 @@ const sendData = () =>{
             const results = response.results
             console.log(results)
             quizForm.style.display = "none"
+            certificateBox.style.visibility = "visible"
 
             scoreBox.innerHTML += `${response.passed ? 'Congrats you passed' : 'Ups you failed.'} Your result is: ${response.score.toFixed(2)}%`
 

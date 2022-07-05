@@ -40,7 +40,9 @@ def courses_view(request):
 
 def course_view(request, pk):
     course = Course.objects.get(pk=pk)
-    return render(request, 'courses/course.html', {'obj': course})
+    queryset = Course.objects.all()
+    context = {"courses": queryset, 'obj': course}
+    return render(request, 'courses/course.html', context)
 
 
 def get_certified_view(request):

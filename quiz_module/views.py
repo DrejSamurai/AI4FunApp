@@ -10,7 +10,7 @@ def add_quiz(request):
     form = QuizForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('/add_quiz')
+        return redirect('/add_test')
     context = {'form': form}
     return render(request, 'appPages/addQuiz.html', context)
 

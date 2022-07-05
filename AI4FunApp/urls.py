@@ -25,5 +25,6 @@ urlpatterns = [
     path('', include('quiz_module.urls', namespace='quiz_module')),
     path('', include('courses_module.urls')),
     path('', include('certificate_quiz_module.urls')),
+    path('', include('LearningApp.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
