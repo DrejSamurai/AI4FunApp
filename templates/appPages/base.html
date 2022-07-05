@@ -8,47 +8,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     {% block scripts %}
     {% endblock %}
-    <style>
 
-div {
-    display:table;/* shrinks to fit content */
-    margin:auto;
-}
-
- p {font-size: 16px;}
-    .margin {margin-bottom: 45px;}
-    .bg-1 {
-      background-color: #4d4d4f; /* Green */
-      color: #ffffff;
-    }
-    .bg-2 {
-      background-color: #474e5d; /* Dark Blue */
-      color: #ffffff;
-    }
-    .bg-3 {
-      background-color: #ffffff; /* White */
-      color: #555555;
-    }
-    .bg-4 {
-      background-color: #2f2f2f; /* Black Gray */
-      color: #fff;
-    }
-    .container-fluid {
-        padding-top: 70px;
-        padding-bottom: 70px;
-    }
-     #footer {
-            position: fixed;
-            padding: 10px 10px 0px 10px;
-            bottom: 0;
-            width: 100%;
-            /* Height of the footer*/
-            height: 40px;
-            background: grey;
-        }
-
-
-    </style>
+    {% block css %}
+    {% endblock %}
 </head>
 <body>
     {% for message in messages %}
@@ -86,6 +48,13 @@ div {
             {% endif %}
         {% endfor %}
     </li>
+       <li class="nav-item">
+                {%for group in request.user.groups.all %}
+            {% if group.name == 'Professor' %}
+                     <a class="nav-link text-white" href="/add_test">Add Test<span class="sr-only">(current)</span></a>
+            {% endif %}
+        {% endfor %}
+    </li>
         {%for group in request.user.groups.all %}
             {% if group.name == 'Professor' %}
                 <li>
@@ -100,7 +69,7 @@ div {
     </ul>
       {% else %}
             <ul class="nav navbar-nav navbar-right">
-      <li><a href="/signin" class="text-white"> Sing in</a></li>
+      <li><a href="/signin" class="text-white"> Sign in</a></li>
     </ul>
             {% endif %}
   </div>

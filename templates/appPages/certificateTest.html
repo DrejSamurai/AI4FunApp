@@ -9,6 +9,20 @@
   {% block scripts %}
       <script src="{% static '/quiz.js' %}" defer></script>
   {% endblock scripts %}
+
+{% block css %}
+     <style>
+          #footer {
+            position: fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/
+            height: 40px;
+            background: grey;
+        }
+     </style>
+{% endblock %}
 </head>
 <body class="bg-dark">
   <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">

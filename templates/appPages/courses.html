@@ -1,10 +1,24 @@
 {% include "appPages/base.html" %}
+{% block css %}
+     <style>
+          #footer {
+            position: fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/
+            height: 40px;
+            background: grey;
+        }
+     </style>
+{% endblock %}
+
 {% block content %}
     <br>
   <div class="container pt-4">
-      <div class="row">
+      <div>
           {% for course in courses %}
-          <div class="col">
+          <div>
               <div class="card">
                     <div class="card-body" style="width: 200px;">
                         <h5 class="card-title">{{ course.name }}</h5>

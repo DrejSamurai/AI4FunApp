@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import CertificateQuiz
 from django.views.generic import ListView
 from django.http import JsonResponse
@@ -10,9 +10,12 @@ from  certificate_results_module.models import CertificateResult
 
 # This is the main quiz page from the navbar
 def tests_view(request):
-    queryset = CertificateQuiz.objects.all()
-    context = {"quizes": queryset}
-    return render(request, 'appPages/certificate.html', context=context)
+    if request.user.is_authenticated:
+        queryset = CertificateQuiz.objects.all()
+        context = {"quizes": queryset}
+        return render(request, 'appPages/certificate.html', context=context)
+    else:
+        return redirect('/signin')
 
 
 def quiz_view(request, pk):

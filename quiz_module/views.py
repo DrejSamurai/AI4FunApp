@@ -33,10 +33,13 @@ def delete_quiz(request, pk):
 
 # This is the main quiz page from the navbar
 def tests_view(request):
-    queryset = Quiz.objects.all()
-    context = {"quizes": queryset}
-    return render(request, 'appPages/tests.html', context=context)
-
+    if request.user.is_authenticated:
+        queryset = Quiz.objects.all()
+        context = {"quizes": queryset}
+        return render(request, 'appPages/tests.html', context=context)
+    else:
+        return redirect('/signin')
+    
 
 def quiz_view(request, pk):
     quiz = Quiz.objects.get(pk=pk)

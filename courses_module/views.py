@@ -30,9 +30,12 @@ def delete_event(request, pk):
     return redirect('/courses')
 
 def courses_view(request):
-    queryset = Course.objects.all()
-    context = {"courses": queryset}
-    return render(request, "appPages/courses.html", context)
+    if request.user.is_authenticated:
+        queryset = Course.objects.all()
+        context = {"courses": queryset}
+        return render(request, "appPages/courses.html", context)
+    else:
+        return redirect('/signin')
 
 
 def course_view(request, pk):
